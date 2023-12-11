@@ -1,13 +1,13 @@
 /* ---------------------------------------------------------------------------------------*/
-/*  @file:    startup_MK60DZ10.s                                                          */
+/*  @file:    startup_MK60D10.s                                                           */
 /*  @purpose: CMSIS Cortex-M4 Core Device Startup File                                    */
-/*            MK60DZ10                                                                    */
-/*  @version: 1.6                                                                         */
-/*  @date:    2013-10-29                                                                  */
-/*  @build:   b140606                                                                     */
+/*            MK60D10                                                                     */
+/*  @version: 1.8                                                                         */
+/*  @date:    2014-10-14                                                                  */
+/*  @build:   b150225                                                                     */
 /* ---------------------------------------------------------------------------------------*/
 /*                                                                                        */
-/* Copyright (c) 1997 - 2014 , Freescale Semiconductor, Inc.                              */
+/* Copyright (c) 1997 - 2015 , Freescale Semiconductor, Inc.                              */
 /* All rights reserved.                                                                   */
 /*                                                                                        */
 /* Redistribution and use in source and binary forms, with or without modification,       */
@@ -62,110 +62,110 @@ __isr_vector:
     .long   SysTick_Handler                                 /* SysTick Handler*/
 
                                                             /* External Interrupts*/
-    .long   DMA0_IRQHandler                                 /* DMA Channel 0 Transfer Complete*/
-    .long   DMA1_IRQHandler                                 /* DMA Channel 1 Transfer Complete*/
-    .long   DMA2_IRQHandler                                 /* DMA Channel 2 Transfer Complete*/
-    .long   DMA3_IRQHandler                                 /* DMA Channel 3 Transfer Complete*/
-    .long   DMA4_IRQHandler                                 /* DMA Channel 4 Transfer Complete*/
-    .long   DMA5_IRQHandler                                 /* DMA Channel 5 Transfer Complete*/
-    .long   DMA6_IRQHandler                                 /* DMA Channel 6 Transfer Complete*/
-    .long   DMA7_IRQHandler                                 /* DMA Channel 7 Transfer Complete*/
-    .long   DMA8_IRQHandler                                 /* DMA Channel 8 Transfer Complete*/
-    .long   DMA9_IRQHandler                                 /* DMA Channel 9 Transfer Complete*/
-    .long   DMA10_IRQHandler                                /* DMA Channel 10 Transfer Complete*/
-    .long   DMA11_IRQHandler                                /* DMA Channel 11 Transfer Complete*/
-    .long   DMA12_IRQHandler                                /* DMA Channel 12 Transfer Complete*/
-    .long   DMA13_IRQHandler                                /* DMA Channel 13 Transfer Complete*/
-    .long   DMA14_IRQHandler                                /* DMA Channel 14 Transfer Complete*/
-    .long   DMA15_IRQHandler                                /* DMA Channel 15 Transfer Complete*/
-    .long   DMA_Error_IRQHandler                            /* DMA Error Interrupt*/
-    .long   MCM_IRQHandler                                  /* Normal Interrupt*/
-    .long   FTFL_IRQHandler                                 /* FTFL Interrupt*/
-    .long   Read_Collision_IRQHandler                       /* Read Collision Interrupt*/
-    .long   LVD_LVW_IRQHandler                              /* Low Voltage Detect, Low Voltage Warning*/
-    .long   LLW_IRQHandler                                  /* Low Leakage Wakeup*/
-    .long   Watchdog_IRQHandler                             /* WDOG Interrupt*/
-    .long   RNG_IRQHandler                                  /* RNGB Interrupt*/
-    .long   I2C0_IRQHandler                                 /* I2C0 interrupt*/
-    .long   I2C1_IRQHandler                                 /* I2C1 interrupt*/
-    .long   SPI0_IRQHandler                                 /* SPI0 Interrupt*/
-    .long   SPI1_IRQHandler                                 /* SPI1 Interrupt*/
-    .long   SPI2_IRQHandler                                 /* SPI2 Interrupt*/
-    .long   CAN0_ORed_Message_buffer_IRQHandler             /* CAN0 OR'd Message Buffers Interrupt*/
-    .long   CAN0_Bus_Off_IRQHandler                         /* CAN0 Bus Off Interrupt*/
-    .long   CAN0_Error_IRQHandler                           /* CAN0 Error Interrupt*/
-    .long   CAN0_Tx_Warning_IRQHandler                      /* CAN0 Tx Warning Interrupt*/
-    .long   CAN0_Rx_Warning_IRQHandler                      /* CAN0 Rx Warning Interrupt*/
-    .long   CAN0_Wake_Up_IRQHandler                         /* CAN0 Wake Up Interrupt*/
-    .long   Reserved51_IRQHandler                           /* Reserved interrupt 51*/
-    .long   Reserved52_IRQHandler                           /* Reserved interrupt 52*/
-    .long   CAN1_ORed_Message_buffer_IRQHandler             /* CAN1 OR'd Message Buffers Interrupt*/
-    .long   CAN1_Bus_Off_IRQHandler                         /* CAN1 Bus Off Interrupt*/
-    .long   CAN1_Error_IRQHandler                           /* CAN1 Error Interrupt*/
-    .long   CAN1_Tx_Warning_IRQHandler                      /* CAN1 Tx Warning Interrupt*/
-    .long   CAN1_Rx_Warning_IRQHandler                      /* CAN1 Rx Warning Interrupt*/
-    .long   CAN1_Wake_Up_IRQHandler                         /* CAN1 Wake Up Interrupt*/
-    .long   Reserved59_IRQHandler                           /* Reserved interrupt 59*/
-    .long   Reserved60_IRQHandler                           /* Reserved interrupt 60*/
-    .long   UART0_RX_TX_IRQHandler                          /* UART0 Receive/Transmit interrupt*/
-    .long   UART0_ERR_IRQHandler                            /* UART0 Error interrupt*/
-    .long   UART1_RX_TX_IRQHandler                          /* UART1 Receive/Transmit interrupt*/
-    .long   UART1_ERR_IRQHandler                            /* UART1 Error interrupt*/
-    .long   UART2_RX_TX_IRQHandler                          /* UART2 Receive/Transmit interrupt*/
-    .long   UART2_ERR_IRQHandler                            /* UART2 Error interrupt*/
-    .long   UART3_RX_TX_IRQHandler                          /* UART3 Receive/Transmit interrupt*/
-    .long   UART3_ERR_IRQHandler                            /* UART3 Error interrupt*/
-    .long   UART4_RX_TX_IRQHandler                          /* UART4 Receive/Transmit interrupt*/
-    .long   UART4_ERR_IRQHandler                            /* UART4 Error interrupt*/
-    .long   UART5_RX_TX_IRQHandler                          /* UART5 Receive/Transmit interrupt*/
-    .long   UART5_ERR_IRQHandler                            /* UART5 Error interrupt*/
-    .long   ADC0_IRQHandler                                 /* ADC0 interrupt*/
-    .long   ADC1_IRQHandler                                 /* ADC1 interrupt*/
-    .long   CMP0_IRQHandler                                 /* CMP0 interrupt*/
-    .long   CMP1_IRQHandler                                 /* CMP1 interrupt*/
-    .long   CMP2_IRQHandler                                 /* CMP2 interrupt*/
-    .long   FTM0_IRQHandler                                 /* FTM0 fault, overflow and channels interrupt*/
-    .long   FTM1_IRQHandler                                 /* FTM1 fault, overflow and channels interrupt*/
-    .long   FTM2_IRQHandler                                 /* FTM2 fault, overflow and channels interrupt*/
-    .long   CMT_IRQHandler                                  /* CMT interrupt*/
-    .long   RTC_IRQHandler                                  /* RTC interrupt*/
-    .long   Reserved83_IRQHandler                           /* Reserved interrupt 83*/
-    .long   PIT0_IRQHandler                                 /* PIT timer channel 0 interrupt*/
-    .long   PIT1_IRQHandler                                 /* PIT timer channel 1 interrupt*/
-    .long   PIT2_IRQHandler                                 /* PIT timer channel 2 interrupt*/
-    .long   PIT3_IRQHandler                                 /* PIT timer channel 3 interrupt*/
-    .long   PDB0_IRQHandler                                 /* PDB0 Interrupt*/
-    .long   USB0_IRQHandler                                 /* USB0 interrupt*/
-    .long   USBDCD_IRQHandler                               /* USBDCD Interrupt*/
-    .long   ENET_1588_Timer_IRQHandler                      /* Ethernet MAC IEEE 1588 Timer Interrupt*/
-    .long   ENET_Transmit_IRQHandler                        /* Ethernet MAC Transmit Interrupt*/
-    .long   ENET_Receive_IRQHandler                         /* Ethernet MAC Receive Interrupt*/
-    .long   ENET_Error_IRQHandler                           /* Ethernet MAC Error and miscelaneous Interrupt*/
-    .long   I2S0_IRQHandler                                 /* I2S0 Interrupt*/
-    .long   SDHC_IRQHandler                                 /* SDHC Interrupt*/
-    .long   DAC0_IRQHandler                                 /* DAC0 interrupt*/
-    .long   DAC1_IRQHandler                                 /* DAC1 interrupt*/
+    .long   DMA0_IRQHandler                                 /* DMA channel 0 transfer complete*/
+    .long   DMA1_IRQHandler                                 /* DMA channel 1 transfer complete*/
+    .long   DMA2_IRQHandler                                 /* DMA channel 2 transfer complete*/
+    .long   DMA3_IRQHandler                                 /* DMA channel 3 transfer complete*/
+    .long   DMA4_IRQHandler                                 /* DMA channel 4 transfer complete*/
+    .long   DMA5_IRQHandler                                 /* DMA channel 5 transfer complete*/
+    .long   DMA6_IRQHandler                                 /* DMA channel 6 transfer complete*/
+    .long   DMA7_IRQHandler                                 /* DMA channel 7 transfer complete*/
+    .long   DMA8_IRQHandler                                 /* DMA channel 8 transfer complete*/
+    .long   DMA9_IRQHandler                                 /* DMA channel 9 transfer complete*/
+    .long   DMA10_IRQHandler                                /* DMA channel 10 transfer complete*/
+    .long   DMA11_IRQHandler                                /* DMA channel 11 transfer complete*/
+    .long   DMA12_IRQHandler                                /* DMA channel 12 transfer complete*/
+    .long   DMA13_IRQHandler                                /* DMA channel 13 transfer complete*/
+    .long   DMA14_IRQHandler                                /* DMA channel 14 transfer complete*/
+    .long   DMA15_IRQHandler                                /* DMA channel 15 transfer complete*/
+    .long   DMA_Error_IRQHandler                            /* DMA channel 0 - 15 error*/
+    .long   MCM_IRQHandler                                  /* MCM normal interrupt*/
+    .long   FTFL_IRQHandler                                 /* FTFL command complete*/
+    .long   Read_Collision_IRQHandler                       /* FTFL read collision*/
+    .long   LVD_LVW_IRQHandler                              /* PMC controller low-voltage detect, low-voltage warning*/
+    .long   LLWU_IRQHandler                                 /* Low leakage wakeup*/
+    .long   WDOG_EWM_IRQHandler                             /* Single interrupt vector for  WDOG and EWM*/
+    .long   RNG_IRQHandler                                  /* Randon number generator*/
+    .long   I2C0_IRQHandler                                 /* Inter-integrated circuit 0*/
+    .long   I2C1_IRQHandler                                 /* Inter-integrated circuit 1*/
+    .long   SPI0_IRQHandler                                 /* Serial peripheral Interface 0*/
+    .long   SPI1_IRQHandler                                 /* Serial peripheral Interface 1*/
+    .long   SPI2_IRQHandler                                 /* Serial peripheral Interface 1*/
+    .long   CAN0_ORed_Message_buffer_IRQHandler             /* CAN0 ORed message buffers*/
+    .long   CAN0_Bus_Off_IRQHandler                         /* CAN0 bus off*/
+    .long   CAN0_Error_IRQHandler                           /* CAN0 error*/
+    .long   CAN0_Tx_Warning_IRQHandler                      /* CAN0 Tx warning*/
+    .long   CAN0_Rx_Warning_IRQHandler                      /* CAN0 Rx warning*/
+    .long   CAN0_Wake_Up_IRQHandler                         /* CAN0 wake up*/
+    .long   I2S0_Tx_IRQHandler                              /* Integrated interchip sound 0 transmit interrupt*/
+    .long   I2S0_Rx_IRQHandler                              /* Integrated interchip sound 0 receive interrupt*/
+    .long   CAN1_ORed_Message_buffer_IRQHandler             /* CAN1 OR'd message buffers interrupt*/
+    .long   CAN1_Bus_Off_IRQHandler                         /* CAN1 bus off interrupt*/
+    .long   CAN1_Error_IRQHandler                           /* CAN1 error interrupt*/
+    .long   CAN1_Tx_Warning_IRQHandler                      /* CAN1 Tx warning interrupt*/
+    .long   CAN1_Rx_Warning_IRQHandler                      /* CAN1 Rx warning interrupt*/
+    .long   CAN1_Wake_Up_IRQHandler                         /* CAN1 wake up interrupt*/
+    .long   Reserved59_IRQHandler                           /* Reserved interrupt*/
+    .long   UART0_LON_IRQHandler                            /* UART0 LON*/
+    .long   UART0_RX_TX_IRQHandler                          /* UART0 receive/transmit interrupt*/
+    .long   UART0_ERR_IRQHandler                            /* UART0 error interrupt*/
+    .long   UART1_RX_TX_IRQHandler                          /* UART1 receive/transmit interrupt*/
+    .long   UART1_ERR_IRQHandler                            /* UART1 error interrupt*/
+    .long   UART2_RX_TX_IRQHandler                          /* UART2 receive/transmit interrupt*/
+    .long   UART2_ERR_IRQHandler                            /* UART2 error interrupt*/
+    .long   UART3_RX_TX_IRQHandler                          /* UART3 receive/transmit interrupt*/
+    .long   UART3_ERR_IRQHandler                            /* UART3 error interrupt*/
+    .long   UART4_RX_TX_IRQHandler                          /* UART4 receive/transmit interrupt*/
+    .long   UART4_ERR_IRQHandler                            /* UART4 error interrupt*/
+    .long   UART5_RX_TX_IRQHandler                          /* UART5 receive/transmit interrupt*/
+    .long   UART5_ERR_IRQHandler                            /* UART5 error interrupt*/
+    .long   ADC0_IRQHandler                                 /* Analog-to-digital converter 0*/
+    .long   ADC1_IRQHandler                                 /* Analog-to-digital converter 1*/
+    .long   CMP0_IRQHandler                                 /* Comparator 0*/
+    .long   CMP1_IRQHandler                                 /* Comparator 1*/
+    .long   CMP2_IRQHandler                                 /* Comparator 2*/
+    .long   FTM0_IRQHandler                                 /* FlexTimer module 0 fault, overflow and channels interrupt*/
+    .long   FTM1_IRQHandler                                 /* FlexTimer module 1 fault, overflow and channels interrupt*/
+    .long   FTM2_IRQHandler                                 /* FlexTimer module 2 fault, overflow and channels interrupt*/
+    .long   CMT_IRQHandler                                  /* Carrier modulator transmitter*/
+    .long   RTC_IRQHandler                                  /* Real time clock*/
+    .long   RTC_Seconds_IRQHandler                          /* Real time clock seconds*/
+    .long   PIT0_IRQHandler                                 /* Periodic interrupt timer channel 0*/
+    .long   PIT1_IRQHandler                                 /* Periodic interrupt timer channel 1*/
+    .long   PIT2_IRQHandler                                 /* Periodic interrupt timer channel 2*/
+    .long   PIT3_IRQHandler                                 /* Periodic interrupt timer channel 3*/
+    .long   PDB0_IRQHandler                                 /* Programmable delay block*/
+    .long   USB0_IRQHandler                                 /* USB OTG interrupt*/
+    .long   USBDCD_IRQHandler                               /* USB charger detect*/
+    .long   ENET_1588_Timer_IRQHandler                      /* Ethernet MAC IEEE 1588 timer*/
+    .long   ENET_Transmit_IRQHandler                        /* Ethernet MAC transmit*/
+    .long   ENET_Receive_IRQHandler                         /* Ethernet MAC receive*/
+    .long   ENET_Error_IRQHandler                           /* Ethernet MAC error and miscelaneous*/
+    .long   Reserved95_IRQHandler                           /* Reserved interrupt*/
+    .long   SDHC_IRQHandler                                 /* Secured digital host controller*/
+    .long   DAC0_IRQHandler                                 /* Digital-to-analog converter 0*/
+    .long   DAC1_IRQHandler                                 /* Digital-to-analog converter 1*/
     .long   TSI0_IRQHandler                                 /* TSI0 Interrupt*/
-    .long   MCG_IRQHandler                                  /* MCG Interrupt*/
-    .long   LPTimer_IRQHandler                              /* LPTimer interrupt*/
-    .long   Reserved102_IRQHandler                          /* Reserved interrupt 102*/
+    .long   MCG_IRQHandler                                  /* Multipurpose clock generator*/
+    .long   LPTMR0_IRQHandler                               /* Low power timer interrupt*/
+    .long   Reserved102_IRQHandler                          /* Reserved interrupt*/
     .long   PORTA_IRQHandler                                /* Port A interrupt*/
     .long   PORTB_IRQHandler                                /* Port B interrupt*/
     .long   PORTC_IRQHandler                                /* Port C interrupt*/
     .long   PORTD_IRQHandler                                /* Port D interrupt*/
     .long   PORTE_IRQHandler                                /* Port E interrupt*/
-    .long   Reserved108_IRQHandler                          /* Reserved interrupt 108*/
-    .long   Reserved109_IRQHandler                          /* Reserved interrupt 109*/
-    .long   Reserved110_IRQHandler                          /* Reserved interrupt 110*/
-    .long   Reserved111_IRQHandler                          /* Reserved interrupt 111*/
-    .long   Reserved112_IRQHandler                          /* Reserved interrupt 112*/
-    .long   Reserved113_IRQHandler                          /* Reserved interrupt 113*/
-    .long   Reserved114_IRQHandler                          /* Reserved interrupt 114*/
-    .long   Reserved115_IRQHandler                          /* Reserved interrupt 115*/
-    .long   Reserved116_IRQHandler                          /* Reserved interrupt 116*/
-    .long   Reserved117_IRQHandler                          /* Reserved interrupt 117*/
-    .long   Reserved118_IRQHandler                          /* Reserved interrupt 118*/
-    .long   Reserved119_IRQHandler                          /* Reserved interrupt 119*/
+    .long   Reserved108_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved109_IRQHandler                          /* Reserved interrupt*/
+    .long   SWI_IRQHandler                                  /* Software interrupt*/
+    .long   Reserved111_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved112_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved113_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved114_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved115_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved116_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved117_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved118_IRQHandler                          /* Reserved interrupt*/
+    .long   Reserved119_IRQHandler                          /* Reserved interrupt*/
     .long   DefaultISR                                      /* 120*/
     .long   DefaultISR                                      /* 121*/
     .long   DefaultISR                                      /* 122*/
@@ -312,8 +312,6 @@ __isr_vector:
     .long 0xFFFFFFFF
     .long 0xFFFFFFFE
 
-    .equ _NVIC_ICER0, 0xE000E180
-    .equ _NVIC_ICPR0, 0xE000E280
     .text
     .thumb
 
@@ -322,20 +320,10 @@ __isr_vector:
     .thumb_func
     .align 2
     .globl   Reset_Handler
+    .weak    Reset_Handler
     .type    Reset_Handler, %function
 Reset_Handler:
     cpsid   i               /* Mask interrupts */
-    ldr r0, =_NVIC_ICER0    /* Disable interrupts and clear pending flags */
-    ldr r1, =_NVIC_ICPR0
-    ldr r2, =0xFFFFFFFF
-    mov r3, #8
-_irq_clear:
-    cbz r3, _irq_clear_end
-    str r2, [r0], #4        /* NVIC_ICERx - clear enable IRQ register */
-    str r2, [r1], #4        /* NVIC_ICPRx - clear pending IRQ register */
-    sub r3, r3, #1
-    b _irq_clear
-_irq_clear_end:
 #ifndef __NO_SYSTEM_INIT
     bl SystemInit
 #endif
@@ -399,21 +387,21 @@ _irq_clear_end:
     .pool
     .size Reset_Handler, . - Reset_Handler
 
-  .align	1
-  .thumb_func
-  .weak	Default_Handler
-  .type	Default_Handler, %function
-Default_Handler:
-  b	.
-  .size	Default_Handler, . - Default_Handler
+    .align	1
+    .thumb_func
+    .weak DefaultISR
+    .type DefaultISR, %function
+DefaultISR:
+    b	DefaultISR
+    .size DefaultISR, . - DefaultISR
 
 /*    Macro to define default handlers. Default handler
  *    will be weak symbol and just dead loops. They can be
  *    overwritten by other handlers */
-  .macro	def_irq_handler	handler_name
-  .weak	\handler_name
-  .set	\handler_name, Default_Handler
-  .endm
+    .macro def_irq_handler	handler_name
+    .weak \handler_name
+    .set  \handler_name, DefaultISR
+    .endm
 
 /* Exception Handlers */
     def_irq_handler    NMI_Handler
@@ -446,8 +434,8 @@ Default_Handler:
     def_irq_handler    FTFL_IRQHandler
     def_irq_handler    Read_Collision_IRQHandler
     def_irq_handler    LVD_LVW_IRQHandler
-    def_irq_handler    LLW_IRQHandler
-    def_irq_handler    Watchdog_IRQHandler
+    def_irq_handler    LLWU_IRQHandler
+    def_irq_handler    WDOG_EWM_IRQHandler
     def_irq_handler    RNG_IRQHandler
     def_irq_handler    I2C0_IRQHandler
     def_irq_handler    I2C1_IRQHandler
@@ -460,8 +448,8 @@ Default_Handler:
     def_irq_handler    CAN0_Tx_Warning_IRQHandler
     def_irq_handler    CAN0_Rx_Warning_IRQHandler
     def_irq_handler    CAN0_Wake_Up_IRQHandler
-    def_irq_handler    Reserved51_IRQHandler
-    def_irq_handler    Reserved52_IRQHandler
+    def_irq_handler    I2S0_Tx_IRQHandler
+    def_irq_handler    I2S0_Rx_IRQHandler
     def_irq_handler    CAN1_ORed_Message_buffer_IRQHandler
     def_irq_handler    CAN1_Bus_Off_IRQHandler
     def_irq_handler    CAN1_Error_IRQHandler
@@ -469,7 +457,7 @@ Default_Handler:
     def_irq_handler    CAN1_Rx_Warning_IRQHandler
     def_irq_handler    CAN1_Wake_Up_IRQHandler
     def_irq_handler    Reserved59_IRQHandler
-    def_irq_handler    Reserved60_IRQHandler
+    def_irq_handler    UART0_LON_IRQHandler
     def_irq_handler    UART0_RX_TX_IRQHandler
     def_irq_handler    UART0_ERR_IRQHandler
     def_irq_handler    UART1_RX_TX_IRQHandler
@@ -492,7 +480,7 @@ Default_Handler:
     def_irq_handler    FTM2_IRQHandler
     def_irq_handler    CMT_IRQHandler
     def_irq_handler    RTC_IRQHandler
-    def_irq_handler    Reserved83_IRQHandler
+    def_irq_handler    RTC_Seconds_IRQHandler
     def_irq_handler    PIT0_IRQHandler
     def_irq_handler    PIT1_IRQHandler
     def_irq_handler    PIT2_IRQHandler
@@ -504,13 +492,13 @@ Default_Handler:
     def_irq_handler    ENET_Transmit_IRQHandler
     def_irq_handler    ENET_Receive_IRQHandler
     def_irq_handler    ENET_Error_IRQHandler
-    def_irq_handler    I2S0_IRQHandler
+    def_irq_handler    Reserved95_IRQHandler
     def_irq_handler    SDHC_IRQHandler
     def_irq_handler    DAC0_IRQHandler
     def_irq_handler    DAC1_IRQHandler
     def_irq_handler    TSI0_IRQHandler
     def_irq_handler    MCG_IRQHandler
-    def_irq_handler    LPTimer_IRQHandler
+    def_irq_handler    LPTMR0_IRQHandler
     def_irq_handler    Reserved102_IRQHandler
     def_irq_handler    PORTA_IRQHandler
     def_irq_handler    PORTB_IRQHandler
@@ -519,7 +507,7 @@ Default_Handler:
     def_irq_handler    PORTE_IRQHandler
     def_irq_handler    Reserved108_IRQHandler
     def_irq_handler    Reserved109_IRQHandler
-    def_irq_handler    Reserved110_IRQHandler
+    def_irq_handler    SWI_IRQHandler
     def_irq_handler    Reserved111_IRQHandler
     def_irq_handler    Reserved112_IRQHandler
     def_irq_handler    Reserved113_IRQHandler
@@ -529,6 +517,5 @@ Default_Handler:
     def_irq_handler    Reserved117_IRQHandler
     def_irq_handler    Reserved118_IRQHandler
     def_irq_handler    Reserved119_IRQHandler
-    def_irq_handler    DefaultISR
 
     .end

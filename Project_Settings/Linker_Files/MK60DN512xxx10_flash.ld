@@ -1,10 +1,57 @@
-/* Linker file for GNU C Compiler */
+/*
+** ###################################################################
+**     Processors:          MK60DN512VLL10
+**                          MK60DN512VLQ10
+**                          MK60DN512VMC10
+**                          MK60DN512VMD10
+**
+**     Compiler:            GNU C Compiler
+**     Reference manual:    K60P144M100SF2V2RM Rev. 2, Jun 2012
+**     Version:             rev. 1.6, 2014-10-14
+**     Build:               b150225
+**
+**     Abstract:
+**         Linker file for the GNU C Compiler
+**
+**     Copyright (c) 2014 Freescale Semiconductor, Inc.
+**     All rights reserved.
+**
+**     Redistribution and use in source and binary forms, with or without modification,
+**     are permitted provided that the following conditions are met:
+**
+**     o Redistributions of source code must retain the above copyright notice, this list
+**       of conditions and the following disclaimer.
+**
+**     o Redistributions in binary form must reproduce the above copyright notice, this
+**       list of conditions and the following disclaimer in the documentation and/or
+**       other materials provided with the distribution.
+**
+**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
+**       contributors may be used to endorse or promote products derived from this
+**       software without specific prior written permission.
+**
+**     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+**     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+**     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+**     ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+**     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+**     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+**     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+**     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**
+**     http:                 www.freescale.com
+**     mail:                 support@freescale.com
+**
+** ###################################################################
+*/
 
 /* Entry Point */
 ENTRY(Reset_Handler)
 
-HEAP_SIZE  = DEFINED(__heap_size__)  ? __heap_size__  : 0x00000400;
-STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x00000400;
+HEAP_SIZE  = DEFINED(__heap_size__)  ? __heap_size__  : 0x0400;
+STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x0400;
 
 /* Specify the memory areas */
 MEMORY
@@ -12,8 +59,8 @@ MEMORY
   m_interrupts          (RX)  : ORIGIN = 0x00000000, LENGTH = 0x00000400
   m_flash_config        (RX)  : ORIGIN = 0x00000400, LENGTH = 0x00000010
   m_text                (RX)  : ORIGIN = 0x00000410, LENGTH = 0x0007FBF0
-  m_data                (RW)  : ORIGIN = 0x20000000, LENGTH = 0x00010000
-  m_data_1FFF0000       (RW)  : ORIGIN = 0x1FFF0000, LENGTH = 0x00010000
+  m_data                (RW)  : ORIGIN = 0x1FFF0000, LENGTH = 0x00010000
+  m_data_2              (RW)  : ORIGIN = 0x20000000, LENGTH = 0x00010000
 }
 
 /* Define output sections */
@@ -27,7 +74,6 @@ SECTIONS
     KEEP(*(.isr_vector))     /* Startup code */
     . = ALIGN(4);
   } > m_interrupts
-
 
   .flash_config :
   {
@@ -137,19 +183,7 @@ SECTIONS
     __data_end__ = .;        /* define a global symbol at data end */
   } > m_data
 
-  /* Symbol is used by startup for data initialization */
   __DATA_END = __DATA_ROM + (__data_end__ - __data_start__);
-
-  __m_data_1FFF0000_ROMStart = __DATA_ROM + SIZEOF(.data);
-  .m_data_1FFF0000 : AT(__m_data_1FFF0000_ROMStart)
-  {
-     . = ALIGN(4);
-     __m_data_1FFF0000_RAMStart = .;
-     *(.m_data_1FFF0000)     /* This is an user defined section */
-     __m_data_1FFF0000_RAMEnd = .;
-     . = ALIGN(4);
-  } > m_data_1FFF0000
-  __m_data_1FFF0000_ROMSize = __m_data_1FFF0000_RAMEnd - __m_data_1FFF0000_RAMStart;
 
   /* Uninitialized data section */
   .bss :
@@ -174,17 +208,21 @@ SECTIONS
     __HeapBase = .;
     . += HEAP_SIZE;
     __HeapLimit = .;
-  } > m_data
+  } > m_data_2
 
   .stack :
   {
     . = ALIGN(8);
     . += STACK_SIZE;
-  } > m_data
+  } > m_data_2
 
-  __StackTop   = .;
+  /* Initializes stack on the end of block */
+  __StackTop   = ORIGIN(m_data_2) + LENGTH(m_data_2);
   __StackLimit = __StackTop - STACK_SIZE;
   PROVIDE(__stack = __StackTop);
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
+
+  ASSERT(__StackLimit >= __HeapLimit, "region m_data_2 overflowed with stack and heap")
 }
+
