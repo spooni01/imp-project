@@ -100,6 +100,7 @@ void writeNoneOnDisplay() {
  * 	Write number on display
  */
 void writeDigitOnDisplay(int number) {
+
 	writeNoneOnDisplay();
 
 	switch(number) {
